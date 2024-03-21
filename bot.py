@@ -8,8 +8,8 @@ DISCORD_TOKEN=""
 GUILD = ""
 load_dotenv();
 Token = DISCORD_TOKEN
-
-client = discord.Client(intents=discord.Intents.default())
+intents = discord.Intents.default()
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
@@ -25,5 +25,11 @@ async def on_member_join(member):
         )
         print("new user")
 
-
+@client.event
+async def on_message(message):
+        if message.author == client.user:
+                return
+        boondocks_quotes = "a nigga moment"
+        if message.content == 'hello':
+            await message.channel.send("hey dirtbag")
 client.run(Token)       
