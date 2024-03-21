@@ -17,4 +17,13 @@ async def on_ready():
         print(f"{client.user} has connected to discord")
         print(f'{guild.name}(id: {guild.id})')
 
+@client.event
+async def on_member_join(member):
+        await member.create_dm()
+        await member.dm_channel.send(
+                f'hi welcome to the nullverse'
+        )
+        print("new user")
+
+
 client.run(Token)       
